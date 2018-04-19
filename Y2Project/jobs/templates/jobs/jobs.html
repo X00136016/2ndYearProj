@@ -84,122 +84,26 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Title</th>
-							<th>Description</th>
-							<th>Type</th>
+							<th>Name</th>
 							<th>Issue Date</th>
-							<th>Restricton</th>
-							<th>Country/City</th>
-							<th>Select</th>
-
+							<th>Category</th>
+							<th>Company</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Programer</td>
-							<td>Programing for google</td>
-							<td>Urgent</td>
-							<td>14-4-2018</td>
-							<td>Postgraduet, car</td>
-							<td>Ireland/Dublin</td>
-							<td>
-								<button type="button" class="btn btn-success btn-sm">
-									<span class="glyphicon glyphicon-plus-sign"></span>
-								</button>
-								<button type="button" class="btn btn-danger btn-sm">
-									<span class="glyphicon glyphicon-minus-sign"></span>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Programer</td>
-							<td>Programing for google</td>
-							<td>Urgent</td>
-							<td>14-4-2018</td>
-							<td>Postgraduet, car</td>
-							<td>Ireland/Dublin</td>
-							<td>
-								<button type="button" class="btn btn-success btn-sm">
-									<span class="glyphicon glyphicon-plus-sign"></span>
-								</button>
-								<button type="button" class="btn btn-danger btn-sm">
-									<span class="glyphicon glyphicon-minus-sign"></span>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Programer</td>
-							<td>Programing for google</td>
-							<td>Urgent</td>
-							<td>14-4-2018</td>
-							<td>Postgraduet, car</td>
-							<td>Ireland/Dublin</td>
-							<td>
-								<button type="button" class="btn btn-success btn-sm">
-									<span class="glyphicon glyphicon-plus-sign"></span>
-								</button>
-								<button type="button" class="btn btn-danger btn-sm">
-									<span class="glyphicon glyphicon-minus-sign"></span>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>Programer</td>
-							<td>Programing for google</td>
-							<td>Urgent</td>
-							<td>14-4-2018</td>
-							<td>Postgraduet, car</td>
-							<td>Ireland/Dublin</td>
-							<td>
-								<button type="button" class="btn btn-success btn-sm">
-									<span class="glyphicon glyphicon-plus-sign"></span>
-								</button>
-								<button type="button" class="btn btn-danger btn-sm">
-									<span class="glyphicon glyphicon-minus-sign"></span>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>Programer</td>
-							<td>Programing for google</td>
-							<td>Urgent</td>
-							<td>14-4-2018</td>
-							<td>Postgraduet, car</td>
-							<td>Ireland/Dublin</td>
-							<td>
-								<button type="button" class="btn btn-success btn-sm">
-									<span class="glyphicon glyphicon-plus-sign"></span>
-								</button>
-								<button type="button" class="btn btn-danger btn-sm">
-									<span class="glyphicon glyphicon-minus-sign"></span>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>Programer</td>
-							<td>Programing for google</td>
-							<td>Urgent</td>
-							<td>14-4-2018</td>
-							<td>Postgraduet, car</td>
-							<td>Ireland/Dublin</td>
-							<td>
-								<button type="button" class="btn btn-success btn-sm">
-									<span class="glyphicon glyphicon-plus-sign"></span>
-								</button>
-								<button type="button" class="btn btn-danger btn-sm">
-									<span class="glyphicon glyphicon-minus-sign"></span>
-								</button>
-							</td>
-						</tr>
-
-
-
+						{% if jobs %}
+							{% for job in jobs %}
+								<tr>
+									<td><a href="{% url 'job_detail' job.slug %}">{{job.id}}</a></td>
+									<td>{{job.title}}</td>
+									<td>{{job.date_posted}}</td>
+									<td>{{job.category.name}}</td>
+									<td>{{job.company.name}}</td>
+								</tr>
+							{% endfor %}
+						{% else %}
+							<p>No jobs are available.</p>
+						{% endif %}
 					</tbody>
 
 

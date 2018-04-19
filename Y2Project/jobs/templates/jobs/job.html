@@ -40,44 +40,8 @@
 
 <div class="container-fluid text-center">
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>Quick finder</p>
-        <form class="form-horizontal" action="/action_page.php">
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Text</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="email" placeholder="text" name="text">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="pwd">Date</label>
-            <div class="col-sm-10">
-              <input type="Date" class="form-control" id="pwd" placeholder="Enter Date" name="pwd">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="remember">Article</label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="remember">Jobs</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">Submit</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="col-sm-8 text-left">
+    
+    <div class="col-sm-10 text-left">
 
       <ul class="nav nav-tabs">
         <li class="active">
@@ -106,16 +70,10 @@
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
 
-          <h1>Programmer</h1>
-          <p>To show the quote on the right use the class .blockquote-reverse:</p>
-          <blockquote class="blockquote-reverse">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <footer>Google.com</footer>
+          <h1>{{job.title}}</h1>
+          <blockquote class="blockquote">
+              {{job.content|safe}}
+            <footer>{{job.company}}</footer>
           </blockquote>
 
         </div>
