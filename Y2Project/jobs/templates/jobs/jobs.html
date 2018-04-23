@@ -54,6 +54,10 @@
 		<div class="col-sm-10 text-left">
 
 			<h3>Jobs list</h3>
+			{% if category %}
+				<strong>Filtered for: {{ category.name }}</strong>
+				{{category.description|safe}}
+			{% endif %}
 			<div class="table-responsive">
 				<ul class="pager">
 					<li class="previous">
@@ -97,7 +101,7 @@
 									<td><a href="{% url 'job_detail' job.slug %}">{{job.id}}</a></td>
 									<td>{{job.title}}</td>
 									<td>{{job.date_posted}}</td>
-									<td>{{job.category.name}}</td>
+									<td><a href="{% url 'category_view' job.category.slug %}">{{job.category.name}}</a></td>
 									<td>{{job.company.name}}</td>
 								</tr>
 							{% endfor %}

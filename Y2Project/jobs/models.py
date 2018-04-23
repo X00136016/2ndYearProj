@@ -6,7 +6,7 @@ from markdownx.models import MarkdownxField
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
-    slug = models.CharField(max_length=30)
+    slug = models.CharField(max_length=30, unique=True)
     type = models.IntegerField()
     description = MarkdownxField(help_text="Markdown Enabled")
 
@@ -19,7 +19,7 @@ class Category(models.Model):
 
 class Company(models.Model):
     name = models.CharField(max_length=256)
-    slug = models.CharField(max_length=30)
+    slug = models.CharField(max_length=30, unique=True)
     description = MarkdownxField(help_text="Markdown Enabled")
 
     class Meta():
@@ -30,7 +30,7 @@ class Company(models.Model):
 
 class Job(models.Model):
     title = models.CharField(max_length=256)
-    slug = models.CharField(max_length=30)
+    slug = models.CharField(max_length=30, unique=True)
     content = MarkdownxField(help_text="Markdown Enabled")
     date_posted = models.DateField('Date Posted', default=date.today)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)

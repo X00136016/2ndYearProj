@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from .models import Job
+from .models import Job, Category
 from markdownx.utils import markdownify
+
+from django.http import JsonResponse
+from django.core import serializers
 
 # Create your views here.
 
@@ -31,3 +34,9 @@ def job(request, job_slug):
     job = get_object_or_404(Job, slug=job_slug)
     job.content = markdownify(job.content)
     return render(request, 'jobs/job.html', {'job': job})
+
+def category(request, category_slug):
+    category = get_object_or_404(Category, slug=category_slug)
+    category.description = markdownify(category.description)
+    jobs = Job.objects.all().filter(category=category.id)
+    return render(request, 'jobs/jobs.html', {'jobs': jobs, 'category': category})

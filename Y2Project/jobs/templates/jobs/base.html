@@ -76,15 +76,22 @@
             <a href="{% url 'jobs' %}">Jobs</a>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right">.
+        {% if user.is_authenticated == False %}
           <li>
-            <a href="#">
-              <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+            <a href="/admin/login">
+              <span class="glyphicon glyphicon-log-in"></span>Staff Login</a>
           </li>
-          <li>
-            <a href="#">
-              <span class="glyphicon glyphicon-log-in"></span> Login</a>
+        {% else %}
+        <li>
+            <a href="/admin/">
+              <span class="glyphicon glyphicon-wrench"></span> Admin</a>
           </li>
+           <li>
+            <a href="/admin/logout">
+              <span class="glyphicon glyphicon-log-out"></span> Logout {{user.username}}</a>
+          </li>
+        {% endif %}
         </ul>
       </div>
     </div>
